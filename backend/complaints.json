@@ -1,0 +1,52 @@
+[
+  {
+    "name": "Mital Anil Patil",
+    "city": "Shirpur",
+    "state": "maharashtra",
+    "address": "abc",
+    "pincode": "42450",
+    "product": "1234",
+    "briefComplaint": "hhhhhhhhhh",
+    "complaint_id": "CMP784B10"
+  },
+  {
+    "name": "Mital Anil Patil",
+    "city": "Shirpur",
+    "state": "maharashtra",
+    "address": "abc",
+    "pincode": "42450",
+    "product": "1234",
+    "briefComplaint": "not working",
+    "complaint_id": "CMPEDB92B"
+  },
+  {
+    "name": "sarthak patil",
+    "city": "Shirpur",
+    "state": "maharashtra",
+    "address": "abc",
+    "pincode": "42450",
+    "product": "1234",
+    "briefComplaint": "my wifi is not working",
+    "complaint_id": "CMPB74AB6"
+  },
+  {
+    "name": "NEHA SACHDEVA",
+    "city": "Mohali",
+    "state": "Punjab",
+    "address": "1144, SECTOR 68",
+    "pincode": "160062",
+    "product": "1234",
+    "briefComplaint": "tv not working ",
+    "complaint_id": "CMP9345BF"
+  },
+  {
+    "name": "NEHA SACHDEVA",
+    "city": "Mohali",
+    "state": "Punjab",
+    "address": "1144, SECTOR 68",
+    "pincode": "160062",
+    "product": "4585",
+    "briefComplaint": "not working tv mode",
+    "complaint_id": "CMPD63A2D"
+  }
+]

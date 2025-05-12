@@ -1,0 +1,9 @@
+flask
+flask-cors
+langchain-groq
+langdetect
+python-dotenv
+requests
+faiss-cpu
+sentence-transformers
+googletrans==4.0.0-rc1

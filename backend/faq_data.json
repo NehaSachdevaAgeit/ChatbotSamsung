@@ -1,0 +1,56 @@
+[
+    {
+      "question_en": "My Samsung TV is only starting in Safe Mode. What should I do?",
+      "question_hi": "मेरा सैमसंग टीवी केवल सेफ मोड में शुरू हो रहा है। मुझे क्या करना चाहिए?",
+      "answer_en": "If your TV is in Safe Mode, the issue might require a replacement of the TV board. Please register a complaint for further assistance.",
+      "answer_hi": "यदि आपका टीवी सेफ मोड में है, तो समस्या टीवी बोर्ड के प्रतिस्थापन की हो सकती है। कृपया सहायता के लिए शिकायत दर्ज करें।"
+    },
+    {
+      "question_en": "What USB drive sizes are compatible with Samsung TVs?",
+      "question_hi": "सैमसंग टीवी के साथ कौन से यूएसबी ड्राइव आकार संगत हैं?",
+      "answer_en": "New Samsung TV models support up to 32 GB USB drives. For older models, drives larger than 8 GB may not be supported.",
+      "answer_hi": "नए सैमसंग टीवी मॉडल 32 जीबी तक के यूएसबी ड्राइव को सपोर्ट करते हैं। पुराने मॉडल में 8 जीबी से बड़े ड्राइव समर्थित नहीं हो सकते।"
+    },
+    {
+      "question_en": "Apps like Jio Cinema or Netflix aren't working on my TV. How can I fix this?",
+      "question_hi": "Jio Cinema या Netflix जैसे ऐप्स मेरे टीवी पर काम नहीं कर रहे हैं। मैं इसे कैसे ठीक करूं?",
+      "answer_en": "Try deleting and reinstalling the app. If that fails, reset the TV in recovery mode or register a complaint.",
+      "answer_hi": "ऐप को हटाकर दोबारा इंस्टॉल करने का प्रयास करें। यदि समस्या बनी रहती है, तो टीवी को रिकवरी मोड में रीसेट करें या शिकायत दर्ज करें।"
+    },
+    {
+      "question_en": "Is there a key lock feature on Samsung TVs?",
+      "question_hi": "क्या सैमसंग टीवी में की लॉक फीचर होता है?",
+      "answer_en": "New Samsung LED models don't have a key lock feature. For older models, you may need to register a complaint for support.",
+      "answer_hi": "नए सैमसंग एलईडी मॉडल में की लॉक फीचर नहीं होता। पुराने मॉडल में यह सक्रिय हो सकता है, कृपया सहायता के लिए शिकायत दर्ज करें।"
+    },
+    {
+      "question_en": "What should I do if I get a 'License Issue' while using apps?",
+      "question_hi": "अगर ऐप्स का उपयोग करते समय 'लाइसेंस इश्यू' आए तो क्या करना चाहिए?",
+      "answer_en": "Try resetting the TV and ensure it's connected to a strong internet network. If the issue persists, register a complaint.",
+      "answer_hi": "टीवी को रीसेट करें और सुनिश्चित करें कि यह एक मजबूत इंटरनेट से जुड़ा है। समस्या बनी रहे तो शिकायत दर्ज करें।"
+    },
+    {
+      "question_en": "Why aren't some apps working on my TV?",
+      "question_hi": "मेरे टीवी पर कुछ ऐप्स क्यों काम नहीं कर रहे हैं?",
+      "answer_en": "If your TV has an older Android version, some apps may not be compatible. Consider upgrading if possible.",
+      "answer_hi": "यदि आपके टीवी में पुराना एंड्रॉइड संस्करण है, तो कुछ ऐप्स संगत नहीं हो सकते। संभव हो तो अपग्रेड करें।"
+    },
+    {
+      "question_en": "My old Samsung TV has Wi-Fi Issues. What could be the cause?",
+      "question_hi": "मेरे पुराने सैमसंग टीवी में वाई-फाई समस्या है। इसका कारण क्या हो सकता है?",
+      "answer_en": "Older models may not support certain Wi-Fi standards due to hardware limitations.",
+      "answer_hi": "पुराने मॉडल हार्डवेयर सीमाओं के कारण कुछ वाई-फाई मानकों को सपोर्ट नहीं करते।"
+    },
+    {
+      "question_en": "How should I load clothes in my Samsung washing machine?",
+      "question_hi": "मुझे सैमसंग वॉशिंग मशीन में कपड़े कैसे लोड करने चाहिए?",
+      "answer_en": "Ensure that clothes are loaded according to the machine's capacity to avoid potential issues.",
+      "answer_hi": "कपड़े मशीन की क्षमता के अनुसार ही डालें ताकि कोई समस्या न हो।"
+    },
+    {
+      "question_en": "The washing machine's motor is tearing my clothes. What should I check?",
+      "question_hi": "वॉशिंग मशीन का मोटर मेरे कपड़े फाड़ रहा है। मुझे क्या जांचना चाहिए?",
+      "answer_en": "Inspect the washing machine for internal defects or foreign objects like coins that may be causing damage.",
+      "answer_hi": "मशीन में कोई दोष या सिक्कों जैसे बाहरी वस्तु हैं या नहीं, यह जांचें जो कपड़ों को नुकसान पहुंचा रही हो सकती हैं।"
+    }
+  ]
