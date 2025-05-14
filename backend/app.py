@@ -9,6 +9,16 @@ from datetime import datetime
 from functools import wraps
 from collections import defaultdict
 import time
+import re
+import os
+import json
+import speech_recognition as sr
+from gtts import gTTS
+from pydub import AudioSegment
+from pydub.playback import play
+import io
+import tempfile
+import ffmpeg
 
 # Language Detection
 try:
@@ -42,6 +52,10 @@ logger = logging.getLogger(__name__)
 EMBEDDINGS_MODEL = None
 VECTORSTORES = {}
 
+# Global constants
+SUPPORTED_BRANDS = ["samsung"]
+SUPPORTED_LANGUAGES = ["en", "hi"]
+
 # Load environment variables
 env_path = os.path.join(os.path.dirname(__file__), '.env')
 load_dotenv(env_path)
@@ -52,6 +66,62 @@ if 'GROQ_API_KEY' not in os.environ:
 
 app = Flask(__name__)
 CORS(app)
+
+# Speech Recognition Function
+def speech_to_text(timeout=3, phrase_time_limit=3):
+    """Perform speech recognition with configurable timeout and phrase time limit
+    
+    Args:
+        timeout (int): Maximum time to wait for speech input
+        phrase_time_limit (int): Maximum time to record a single phrase
+    
+    Returns:
+        str: Recognized text or error message
+    """
+    recognizer = sr.Recognizer()
+    recognizer.dynamic_energy_threshold = True
+    
+    with sr.Microphone() as source:
+        print("Listening...")
+        recognizer.adjust_for_ambient_noise(source, duration=1)
+        
+        try:
+            # Listen with timeout and phrase time limit
+            audio = recognizer.listen(
+                source, 
+                timeout=timeout, 
+                phrase_time_limit=phrase_time_limit
+            )
+            
+            # Recognize speech using Google Speech Recognition
+            text = recognizer.recognize_google(audio)
+            print(f"Recognized text: {text}")
+            return text
+        
+        except sr.WaitTimeoutError:
+            return "No speech detected. Please try again."
+        except sr.UnknownValueError:
+            return "Could not understand audio. Please speak clearly."
+        except sr.RequestError as e:
+            return f"Speech recognition service error: {e}"
+
+# Text to Speech Function
+def text_to_speech(text, language='en'):
+    try:
+        # Create a temporary file
+        with tempfile.NamedTemporaryFile(delete=False, suffix='.mp3') as temp_audio:
+            # Generate speech
+            tts = gTTS(text=text, lang=language)
+            tts.save(temp_audio.name)
+            
+            # Play the audio
+            audio = AudioSegment.from_mp3(temp_audio.name)
+            play(audio)
+            
+            return temp_audio.name
+    except Exception as e:
+        print(f"Text to speech error: {e}")
+        return None
 
 ### --- Complaint Registration Endpoint --- ###
 @app.route('/api/complaints', methods=['POST'])
@@ -85,7 +155,10 @@ def load_faq_documents(language="en"):
         key_a = "answer_en" if language == "en" else "answer_hi"
 
         docs = [
-            Document(page_content=f"{faq[key_q]} {faq[key_a]}")
+            Document(
+                page_content=f"{faq[key_q]} {faq[key_a]}",
+                metadata={"source": "samsung_faq", "brand": "samsung"}
+            )
             for faq in faq_list if key_q in faq and key_a in faq
         ]
 
@@ -154,12 +227,18 @@ def train_vectorstore(language="en", force_retrain=False):
     if not force_retrain and os.path.exists(index_path):
         try:
             logger.info(f"Loading existing index from {index_path}...")
-            vectorstore = FAISS.load_local(index_path, EMBEDDINGS_MODEL)
+            # Safely load the index with dangerous deserialization allowed
+            vectorstore = FAISS.load_local(index_path, EMBEDDINGS_MODEL, allow_dangerous_deserialization=True)
             logger.info(f"Successfully loaded existing vectorstore for {language}")
             VECTORSTORES[language] = vectorstore
             return vectorstore
         except Exception as e:
-            logger.error(f"Error loading existing index: {e}. Will retrain.")
+            logger.error(f"Error loading existing index: {e}. Will retrain and recreate index.")
+            # Remove potentially corrupted index file
+            try:
+                os.remove(index_path)
+            except Exception as remove_error:
+                logger.warning(f"Could not remove corrupted index file: {remove_error}")
     
     # Need to train a new model
     logger.info(f"Creating new vectorstore for language: {language}...")
@@ -279,10 +358,51 @@ def verify_groq_api_key(api_key):
         logger.error(f"[GROQ_API_ERROR] Unexpected error during API key verification: {e}")
         return False
 
+# Detect brand mentions in text
+def detect_brand_in_text(text):
+    """Detect if a non-Samsung brand is mentioned in the text"""
+    # List of common electronic brands excluding Samsung (which is supported)
+    other_brands = [
+        "lg", "sony", "panasonic", "philips", "toshiba", "sharp", 
+        "hisense", "vizio", "onida", "xiaomi", "mi", "tcl", "vu", 
+        "micromax", "haier", "videocon", "whirlpool", "bosch", "ifb", 
+        "godrej", "hitachi", "voltas", "electrolux", "siemens", "beko",
+        "apple", "google", "oneplus", "amazon", "fire tv", "roku", "chromecast"
+    ]
+    
+    text_lower = text.lower()
+    
+    # Check if any of the non-supported brands are mentioned
+    for brand in other_brands:
+        # Use word boundary patterns to prevent partial matches
+        pattern = r'\b' + re.escape(brand) + r'\b'
+        if re.search(pattern, text_lower):
+            return brand
+    
+    # Check if Samsung is mentioned (this is our supported brand)
+    if re.search(r'\bsamsung\b', text_lower):
+        return "samsung"
+    
+    # No clear brand detected
+    return None
+
+# Get brand-specific response
+def get_brand_specific_response(brand, language="en"):
+    """Get a response for a non-Samsung brand inquiry"""
+    if language == "en":
+        return f"I apologize, but this support system is specifically designed for Samsung products only. We don't have information about {brand.title()} products. Please contact {brand.title()} customer support for assistance with their products."
+    else:  # Hindi
+        return f"मुझे खेद है, लेकिन यह सहायता प्रणाली केवल सैमसंग उत्पादों के लिए है। हमारे पास {brand.title()} उत्पादों के बारे में जानकारी नहीं है। कृपया उनके उत्पादों के लिए {brand.title()} ग्राहक सहायता से संपर्क करें।"
+
 # Simple fallback response generator when LLM is not available
 def generate_fallback_response(question, language="en"):
     """Generate a simple response without using the LLM when there are issues"""
     try:
+        # Check if question mentions a non-Samsung brand
+        detected_brand = detect_brand_in_text(question)
+        if detected_brand and detected_brand != "samsung":
+            return get_brand_specific_response(detected_brand, language)
+            
         with open("faq_data.json", "r", encoding="utf-8") as f:
             faq_list = json.load(f)
         
@@ -402,7 +522,7 @@ def get_qa_chain(language="en"):
         # Create retriever
         retriever = vectorstore.as_retriever(
             search_kwargs={
-                "k": 3,  # Top 3 most relevant documents
+                "k": 5,  # Increased from 3 to 5 for better context
                 "search_type": "similarity"  # Most similar documents
             }
         )
@@ -412,7 +532,7 @@ def get_qa_chain(language="en"):
             llm = ChatGroq(
                 api_key=api_key, 
                 model_name="llama-3.3-70b-versatile", 
-                temperature=0.2,  # Slight randomness for more creative responses
+                temperature=0.1,  # Reduced from 0.2 for more precise answers
                 max_tokens=500,  # Limit response length
                 max_retries=3,  # Retry mechanism
                 timeout=30  # Longer timeout for complex queries
@@ -424,10 +544,26 @@ def get_qa_chain(language="en"):
         # Create QA Chain with comprehensive configuration
         from langchain_core.prompts import PromptTemplate
         
-        # Create a proper PromptTemplate
+        # Improved prompt template with brand-specific instructions
         prompt_template = PromptTemplate(
             input_variables=["context", "question"],
-            template="Given the following context and question, provide a helpful and concise answer:\n\nContext:\n{context}\n\nQuestion: {question}\n\nAnswer:"
+            template="""You are a Samsung product support specialist. Only answer questions about Samsung products. 
+If the question is about any other brand like LG, Sony, Xiaomi, etc., inform the user that this service is only for Samsung products.
+
+Given the following context from Samsung's FAQ database and the user's question, provide a helpful, accurate, and concise answer:
+
+Context:
+{context}
+
+Question: {question}
+
+Instructions:
+1. If the question is about a non-Samsung brand, politely inform the user this service only supports Samsung.
+2. If the question is about Samsung but not covered in the context, say you don't have enough information.
+3. If you don't know the answer, suggest registering a complaint for direct assistance.
+4. Keep your answer focused and concise.
+
+Answer:"""
         )
         
         qa_chain = RetrievalQA.from_chain_type(
@@ -497,20 +633,28 @@ def handle_faq():
     try:
         data = request.get_json()
         question = data.get("question", "").strip()
-        language = data.get("lang", "en").strip().lower()
         
         if not question:
             return jsonify({"error": "Question is required"}), 400
         
         # Auto-detect language if not specified
-        language = data.get("language")
-        if not language:
+        language = data.get("language") or data.get("lang", "en").strip().lower()
+        if not language or language not in SUPPORTED_LANGUAGES:
             language = detect(question)
-        
-        # Fallback to supported languages
-        language = 'en' if language not in ["en", "hi"] else language
+            # Fallback to supported languages
+            language = 'en' if language not in SUPPORTED_LANGUAGES else language
         
         logger.info(f"[PROCESSING] Question: {question}, Language: {language}")
+        
+        # Check if question is about a non-Samsung brand
+        detected_brand = detect_brand_in_text(question)
+        if detected_brand and detected_brand != "samsung":
+            brand_response = get_brand_specific_response(detected_brand, language)
+            return jsonify({
+                "response": brand_response,
+                "sources": [],
+                "brand_filtered": True
+            })
         
         # Get QA Chain with the pre-trained vectorstore
         qa_chain = get_qa_chain(language)
@@ -558,6 +702,83 @@ def handle_faq():
             "fallback": True
         })
 
+def process_chat_request(question, language='en'):
+    """Process chat request and generate appropriate response"""
+    start_time = time.time()
+    
+    try:
+        # Detect brand if mentioned
+        detected_brand = detect_brand_in_text(question)
+        
+        # Check if a non-Samsung brand is mentioned
+        if detected_brand and detected_brand != "samsung":
+            return get_brand_specific_response(detected_brand, language)
+        
+        # Get QA Chain with the pre-trained vectorstore
+        qa_chain = get_qa_chain(language)
+        if qa_chain is None:
+            logger.error("QA Chain is None - Using direct fallback")
+            return generate_fallback_response(question, language)
+        
+        # Process query
+        result = qa_chain({"query": question})
+        
+        # Extract answer
+        answer = result.get('result', "Unable to generate response")
+        
+        processing_time = time.time() - start_time
+        logger.info(f"Request processed in {processing_time:.2f} seconds")
+        
+        return answer
+    
+    except Exception as e:
+        logger.error(f"[ERROR] {e}", exc_info=True)
+        
+        # Generate fallback response
+        return generate_fallback_response(question, language)
+
+@app.route('/api/faq', methods=['POST'])
+def faq_endpoint():
+    # Get request data
+    data = request.json
+    question = data.get('question', '')
+    lang = data.get('lang', 'en')
+    
+    # Process the chat request
+    response = process_chat_request(question, lang)
+    
+    return jsonify({'response': response})
+
+@app.route('/chat', methods=['POST', 'OPTIONS'])
+def chat_endpoint():
+    # Handle preflight request for CORS
+    if request.method == 'OPTIONS':
+        response = jsonify({'status': 'OK'})
+        response.headers.add('Access-Control-Allow-Origin', '*')
+        response.headers.add('Access-Control-Allow-Headers', 'Content-Type')
+        response.headers.add('Access-Control-Allow-Methods', 'POST')
+        return response
+    
+    # Get request data
+    data = request.json
+    message = data.get('message', '')
+    language = data.get('language', 'en')
+    use_speech_input = data.get('use_speech_input', False)
+    use_speech_output = data.get('use_speech_output', False)
+    
+    # If speech input is enabled, use speech recognition
+    if use_speech_input:
+        message = speech_to_text()
+    
+    # Process the chat request
+    response = process_chat_request(message, language)
+    
+    # Optional text-to-speech
+    if use_speech_output:
+        text_to_speech(response, language)
+    
+    return jsonify({'response': response})
+
 @app.route('/api/feedback', methods=['POST'])
 def receive_feedback():
     """Collect user feedback on chatbot responses"""
@@ -583,6 +804,50 @@ def receive_feedback():
     except Exception as e:
         logger.error(f"Feedback endpoint error: {e}")
         return jsonify({"error": "Invalid feedback data"}), 400
+
+# Health check endpoint
+@app.route('/health', methods=['GET'])
+def health_check():
+    """Simple health check endpoint"""
+    return jsonify({
+        "status": "ok",
+        "time": datetime.now().isoformat(),
+        "supported_brands": SUPPORTED_BRANDS,
+        "supported_languages": SUPPORTED_LANGUAGES
+    })
+
+# Retrain models endpoint (admin only)
+@app.route('/api/admin/retrain', methods=['POST'])
+def retrain_models():
+    """Admin endpoint to force retraining of models"""
+    try:
+        admin_token = request.headers.get('X-Admin-Token')
+        # Simple admin token check (should be more secure in production)
+        if not admin_token or admin_token != os.environ.get('ADMIN_TOKEN', 'admin-secret-token'):
+            return jsonify({"error": "Unauthorized"}), 401
+            
+        data = request.get_json() or {}
+        language = data.get('language')
+        
+        if language and language in SUPPORTED_LANGUAGES:
+            threading.Thread(
+                target=train_vectorstore, 
+                args=(language, True), 
+                daemon=True
+            ).start()
+            return jsonify({"status": f"Retraining started for {language}"})
+        else:
+            # Retrain all supported languages
+            for lang in SUPPORTED_LANGUAGES:
+                threading.Thread(
+                    target=train_vectorstore, 
+                    args=(lang, True), 
+                    daemon=True
+                ).start()
+            return jsonify({"status": "Retraining started for all languages"})
+    except Exception as e:
+        logger.error(f"Retrain endpoint error: {e}")
+        return jsonify({"error": str(e)}), 500
 
 if __name__ == "__main__":
     # Make sure we have the required files

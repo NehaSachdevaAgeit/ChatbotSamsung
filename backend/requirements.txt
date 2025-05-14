@@ -7,3 +7,8 @@ requests
 faiss-cpu
 sentence-transformers
 googletrans==4.0.0-rc1
+SpeechRecognition
+pydub
+gtts
+pyaudio
+ffmpeg-python

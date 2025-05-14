@@ -1750,3 +1750,736 @@ UnboundLocalError: cannot access local variable 'HuggingFaceEmbeddings' where it
 2025-05-12 19:44:32,464 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
 2025-05-12 19:44:32,465 - INFO - Request processed in 2.86 seconds
 2025-05-12 19:44:32,468 - INFO - 127.0.0.1 - - [12/May/2025 19:44:32] "POST /api/faq HTTP/1.1" 200 -
+2025-05-13 14:13:04,277 - INFO - Found API key in environment variables
+2025-05-13 14:13:04,698 - INFO - [GROQ_API] API key verified successfully
+2025-05-13 14:13:04,698 - INFO - Groq API key verified successfully!
+2025-05-13 14:13:04,698 - INFO - Starting preload of models...
+2025-05-13 14:13:04,757 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-05-13 14:13:04,757 - INFO - [33mPress CTRL+C to quit[0m
+2025-05-13 14:13:12,096 - INFO - 127.0.0.1 - - [13/May/2025 14:13:12] "OPTIONS /api/faq HTTP/1.1" 200 -
+2025-05-13 14:13:12,355 - INFO - [REQUEST] Received FAQ request
+2025-05-13 14:13:12,355 - INFO - [PROCESSING] Question: hello, Language: en
+2025-05-13 14:13:12,358 - INFO - [QA_CHAIN] Creating QA Chain for language: en
+2025-05-13 14:13:12,358 - INFO - Found API key in environment variables
+2025-05-13 14:13:12,740 - INFO - [GROQ_API] API key verified successfully
+2025-05-13 14:13:12,740 - INFO - [QA_CHAIN] API key retrieved and verified successfully
+2025-05-13 14:13:46,656 - INFO - Initializing embeddings model...
+2025-05-13 14:13:46,656 - INFO - Initializing embeddings model...
+2025-05-13 14:13:46,656 - INFO - Use pytorch device_name: cpu
+2025-05-13 14:13:46,656 - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-05-13 14:13:46,656 - INFO - Use pytorch device_name: cpu
+2025-05-13 14:13:46,656 - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-05-13 14:13:50,624 - ERROR - ERROR: Failed to initialize embeddings model: cannot access local variable 'HuggingFaceEmbeddings' where it is not associated with a value
+Traceback (most recent call last):
+  File "C:\Users\Neha Sachdeva\OneDrive\Desktop\internship\customer_chatbot\customer_chatbot\backend\app.py", line 126, in initialize_embeddings
+    EMBEDDINGS_MODEL = HuggingFaceEmbeddings(
+                       ^^^^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'HuggingFaceEmbeddings' where it is not associated with a value
+2025-05-13 14:13:50,639 - INFO - Use pytorch device_name: cpu
+2025-05-13 14:13:50,639 - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-05-13 14:13:50,992 - ERROR - ERROR: Failed to initialize embeddings model: cannot access local variable 'HuggingFaceEmbeddings' where it is not associated with a value
+Traceback (most recent call last):
+  File "C:\Users\Neha Sachdeva\OneDrive\Desktop\internship\customer_chatbot\customer_chatbot\backend\app.py", line 126, in initialize_embeddings
+    EMBEDDINGS_MODEL = HuggingFaceEmbeddings(
+                       ^^^^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'HuggingFaceEmbeddings' where it is not associated with a value
+2025-05-13 14:13:50,992 - INFO - Use pytorch device_name: cpu
+2025-05-13 14:13:50,995 - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-05-13 14:13:53,558 - INFO - Fallback embeddings model initialized successfully
+2025-05-13 14:13:53,558 - INFO - Loading existing index from faiss_en_index...
+2025-05-13 14:13:53,558 - ERROR - Error loading existing index: The de-serialization relies loading a pickle file. Pickle files can be modified to deliver a malicious payload that results in execution of arbitrary code on your machine.You will need to set `allow_dangerous_deserialization` to `True` to enable deserialization. If you do this, make sure that you trust the source of the data. For example, if you are loading a file that you created, and know that no one else has modified the file, then this is safe to do. Do not set this to `True` if you are loading a file from an untrusted source (e.g., some random site on the internet.).. Will retrain.
+2025-05-13 14:13:53,558 - INFO - Creating new vectorstore for language: en...
+2025-05-13 14:13:53,566 - INFO - Use pytorch device_name: cpu
+2025-05-13 14:13:53,568 - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-05-13 14:13:54,239 - INFO - Fallback embeddings model initialized successfully
+2025-05-13 14:13:54,240 - INFO - Loading existing index from faiss_en_index...
+2025-05-13 14:13:54,240 - ERROR - Error loading existing index: The de-serialization relies loading a pickle file. Pickle files can be modified to deliver a malicious payload that results in execution of arbitrary code on your machine.You will need to set `allow_dangerous_deserialization` to `True` to enable deserialization. If you do this, make sure that you trust the source of the data. For example, if you are loading a file that you created, and know that no one else has modified the file, then this is safe to do. Do not set this to `True` if you are loading a file from an untrusted source (e.g., some random site on the internet.).. Will retrain.
+2025-05-13 14:13:54,240 - INFO - Creating new vectorstore for language: en...
+2025-05-13 14:13:54,241 - INFO - Use pytorch device_name: cpu
+2025-05-13 14:13:54,241 - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-05-13 14:13:56,310 - INFO - Use pytorch device_name: cpu
+2025-05-13 14:13:56,310 - INFO - Load pretrained SentenceTransformer: paraphrase-multilingual-MiniLM-L12-v2
+2025-05-13 14:13:57,184 - INFO - Use pytorch device_name: cpu
+2025-05-13 14:13:57,190 - INFO - Load pretrained SentenceTransformer: paraphrase-multilingual-MiniLM-L12-v2
+2025-05-13 14:14:01,063 - INFO - Loading faiss with AVX2 support.
+2025-05-13 14:14:02,893 - INFO - Successfully loaded faiss with AVX2 support.
+2025-05-13 14:14:02,905 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes. This is only an error if you're trying to use GPU Faiss.
+2025-05-13 14:14:02,912 - INFO - Successfully trained and saved vectorstore for en at faiss_en_index
+2025-05-13 14:14:03,480 - INFO - Successfully trained and saved vectorstore for en at faiss_en_index
+2025-05-13 14:14:03,480 - INFO - Loading existing index from faiss_hi_index...
+2025-05-13 14:14:03,482 - ERROR - Error loading existing index: The de-serialization relies loading a pickle file. Pickle files can be modified to deliver a malicious payload that results in execution of arbitrary code on your machine.You will need to set `allow_dangerous_deserialization` to `True` to enable deserialization. If you do this, make sure that you trust the source of the data. For example, if you are loading a file that you created, and know that no one else has modified the file, then this is safe to do. Do not set this to `True` if you are loading a file from an untrusted source (e.g., some random site on the internet.).. Will retrain.
+2025-05-13 14:14:03,482 - INFO - Creating new vectorstore for language: hi...
+2025-05-13 14:14:03,483 - INFO - Use pytorch device_name: cpu
+2025-05-13 14:14:03,483 - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-05-13 14:14:04,395 - INFO - [QA_CHAIN] QA Chain created successfully
+2025-05-13 14:14:04,906 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-13 14:14:04,921 - INFO - Request processed in 52.57 seconds
+2025-05-13 14:14:04,921 - INFO - 127.0.0.1 - - [13/May/2025 14:14:04] "POST /api/faq HTTP/1.1" 200 -
+2025-05-13 14:14:06,465 - INFO - Use pytorch device_name: cpu
+2025-05-13 14:14:06,475 - INFO - Load pretrained SentenceTransformer: paraphrase-multilingual-MiniLM-L12-v2
+2025-05-13 14:14:10,693 - INFO - Successfully trained and saved vectorstore for hi at faiss_hi_index
+2025-05-13 14:14:10,693 - INFO - Model preloading completed!
+2025-05-13 14:15:41,621 - INFO - 127.0.0.1 - - [13/May/2025 14:15:41] "OPTIONS /api/faq HTTP/1.1" 200 -
+2025-05-13 14:15:41,877 - INFO - [REQUEST] Received FAQ request
+2025-05-13 14:15:41,877 - INFO - [PROCESSING] Question: samsung tv not working, Language: en
+2025-05-13 14:15:41,877 - INFO - [QA_CHAIN] Creating QA Chain for language: en
+2025-05-13 14:15:41,877 - INFO - Found API key in environment variables
+2025-05-13 14:15:42,285 - INFO - [GROQ_API] API key verified successfully
+2025-05-13 14:15:42,285 - INFO - [QA_CHAIN] API key retrieved and verified successfully
+2025-05-13 14:15:43,370 - INFO - [QA_CHAIN] QA Chain created successfully
+2025-05-13 14:15:43,886 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-13 14:15:43,886 - INFO - Request processed in 2.01 seconds
+2025-05-13 14:15:43,886 - INFO - 127.0.0.1 - - [13/May/2025 14:15:43] "POST /api/faq HTTP/1.1" 200 -
+2025-05-13 14:15:51,360 - INFO - 127.0.0.1 - - [13/May/2025 14:15:51] "OPTIONS /api/faq HTTP/1.1" 200 -
+2025-05-13 14:15:51,669 - INFO - [REQUEST] Received FAQ request
+2025-05-13 14:15:51,669 - INFO - [PROCESSING] Question: lg tv not working, Language: en
+2025-05-13 14:15:51,669 - INFO - 127.0.0.1 - - [13/May/2025 14:15:51] "POST /api/faq HTTP/1.1" 200 -
+2025-05-13 14:16:11,190 - INFO - 127.0.0.1 - - [13/May/2025 14:16:11] "OPTIONS /api/faq HTTP/1.1" 200 -
+2025-05-13 14:16:11,500 - INFO - [REQUEST] Received FAQ request
+2025-05-13 14:16:11,500 - INFO - [PROCESSING] Question: i would like to register a complaint, Language: en
+2025-05-13 14:16:11,500 - INFO - [QA_CHAIN] Creating QA Chain for language: en
+2025-05-13 14:16:11,500 - INFO - Found API key in environment variables
+2025-05-13 14:16:11,882 - INFO - [GROQ_API] API key verified successfully
+2025-05-13 14:16:11,887 - INFO - [QA_CHAIN] API key retrieved and verified successfully
+2025-05-13 14:16:12,930 - INFO - [QA_CHAIN] QA Chain created successfully
+2025-05-13 14:16:13,600 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-13 14:16:13,602 - INFO - Request processed in 2.10 seconds
+2025-05-13 14:16:13,603 - INFO - 127.0.0.1 - - [13/May/2025 14:16:13] "POST /api/faq HTTP/1.1" 200 -
+2025-05-13 14:25:56,919 - INFO - Found API key in environment variables
+2025-05-13 14:25:57,346 - INFO - [GROQ_API] API key verified successfully
+2025-05-13 14:25:57,346 - INFO - Groq API key verified successfully!
+2025-05-13 14:25:57,346 - INFO - Starting preload of models...
+2025-05-13 14:25:57,388 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-05-13 14:25:57,388 - INFO - [33mPress CTRL+C to quit[0m
+2025-05-13 14:26:07,011 - INFO - Initializing embeddings model...
+2025-05-13 14:26:07,013 - INFO - Use pytorch device_name: cpu
+2025-05-13 14:26:07,013 - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-05-13 14:26:10,121 - ERROR - ERROR: Failed to initialize embeddings model: cannot access local variable 'HuggingFaceEmbeddings' where it is not associated with a value
+Traceback (most recent call last):
+  File "C:\Users\Neha Sachdeva\OneDrive\Desktop\internship\customer_chatbot\customer_chatbot\backend\app.py", line 168, in initialize_embeddings
+    EMBEDDINGS_MODEL = HuggingFaceEmbeddings(
+                       ^^^^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'HuggingFaceEmbeddings' where it is not associated with a value
+2025-05-13 14:26:10,136 - INFO - Use pytorch device_name: cpu
+2025-05-13 14:26:10,136 - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-05-13 14:26:12,695 - INFO - Fallback embeddings model initialized successfully
+2025-05-13 14:26:12,695 - INFO - Loading existing index from faiss_en_index...
+2025-05-13 14:26:12,695 - ERROR - Error loading existing index: The de-serialization relies loading a pickle file. Pickle files can be modified to deliver a malicious payload that results in execution of arbitrary code on your machine.You will need to set `allow_dangerous_deserialization` to `True` to enable deserialization. If you do this, make sure that you trust the source of the data. For example, if you are loading a file that you created, and know that no one else has modified the file, then this is safe to do. Do not set this to `True` if you are loading a file from an untrusted source (e.g., some random site on the internet.).. Will retrain.
+2025-05-13 14:26:12,695 - INFO - Creating new vectorstore for language: en...
+2025-05-13 14:26:12,701 - INFO - Use pytorch device_name: cpu
+2025-05-13 14:26:12,701 - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-05-13 14:26:15,271 - INFO - Use pytorch device_name: cpu
+2025-05-13 14:26:15,276 - INFO - Load pretrained SentenceTransformer: paraphrase-multilingual-MiniLM-L12-v2
+2025-05-13 14:26:19,569 - INFO - Loading faiss with AVX2 support.
+2025-05-13 14:26:19,647 - INFO - Successfully loaded faiss with AVX2 support.
+2025-05-13 14:26:19,661 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes. This is only an error if you're trying to use GPU Faiss.
+2025-05-13 14:26:19,666 - INFO - Successfully trained and saved vectorstore for en at faiss_en_index
+2025-05-13 14:26:19,666 - INFO - Loading existing index from faiss_hi_index...
+2025-05-13 14:26:19,669 - ERROR - Error loading existing index: The de-serialization relies loading a pickle file. Pickle files can be modified to deliver a malicious payload that results in execution of arbitrary code on your machine.You will need to set `allow_dangerous_deserialization` to `True` to enable deserialization. If you do this, make sure that you trust the source of the data. For example, if you are loading a file that you created, and know that no one else has modified the file, then this is safe to do. Do not set this to `True` if you are loading a file from an untrusted source (e.g., some random site on the internet.).. Will retrain.
+2025-05-13 14:26:19,669 - INFO - Creating new vectorstore for language: hi...
+2025-05-13 14:26:19,672 - INFO - Use pytorch device_name: cpu
+2025-05-13 14:26:19,672 - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-05-13 14:26:22,280 - INFO - Use pytorch device_name: cpu
+2025-05-13 14:26:22,280 - INFO - Load pretrained SentenceTransformer: paraphrase-multilingual-MiniLM-L12-v2
+2025-05-13 14:26:27,104 - INFO - Successfully trained and saved vectorstore for hi at faiss_hi_index
+2025-05-13 14:26:27,104 - INFO - Model preloading completed!
+2025-05-13 14:30:08,216 - INFO - Found API key in environment variables
+2025-05-13 14:30:08,626 - INFO - [GROQ_API] API key verified successfully
+2025-05-13 14:30:08,626 - INFO - Groq API key verified successfully!
+2025-05-13 14:30:08,629 - INFO - Starting preload of models...
+2025-05-13 14:30:08,669 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-05-13 14:30:08,670 - INFO - [33mPress CTRL+C to quit[0m
+2025-05-13 14:30:18,116 - INFO - Initializing embeddings model...
+2025-05-13 14:30:18,118 - INFO - Use pytorch device_name: cpu
+2025-05-13 14:30:18,119 - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-05-13 14:30:21,676 - ERROR - ERROR: Failed to initialize embeddings model: cannot access local variable 'HuggingFaceEmbeddings' where it is not associated with a value
+Traceback (most recent call last):
+  File "C:\Users\Neha Sachdeva\OneDrive\Desktop\internship\customer_chatbot\customer_chatbot\backend\app.py", line 191, in initialize_embeddings
+    EMBEDDINGS_MODEL = HuggingFaceEmbeddings(
+                       ^^^^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'HuggingFaceEmbeddings' where it is not associated with a value
+2025-05-13 14:30:21,697 - INFO - Use pytorch device_name: cpu
+2025-05-13 14:30:21,698 - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-05-13 14:30:24,233 - INFO - Fallback embeddings model initialized successfully
+2025-05-13 14:30:24,248 - INFO - Loading existing index from faiss_en_index...
+2025-05-13 14:30:24,248 - ERROR - Error loading existing index: The de-serialization relies loading a pickle file. Pickle files can be modified to deliver a malicious payload that results in execution of arbitrary code on your machine.You will need to set `allow_dangerous_deserialization` to `True` to enable deserialization. If you do this, make sure that you trust the source of the data. For example, if you are loading a file that you created, and know that no one else has modified the file, then this is safe to do. Do not set this to `True` if you are loading a file from an untrusted source (e.g., some random site on the internet.).. Will retrain.
+2025-05-13 14:30:24,248 - INFO - Creating new vectorstore for language: en...
+2025-05-13 14:30:24,248 - INFO - Use pytorch device_name: cpu
+2025-05-13 14:30:24,248 - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-05-13 14:30:26,899 - INFO - Use pytorch device_name: cpu
+2025-05-13 14:30:26,899 - INFO - Load pretrained SentenceTransformer: paraphrase-multilingual-MiniLM-L12-v2
+2025-05-13 14:30:30,934 - INFO - 127.0.0.1 - - [13/May/2025 14:30:30] "[33mOPTIONS /chat HTTP/1.1[0m" 404 -
+2025-05-13 14:30:31,070 - INFO - Loading faiss with AVX2 support.
+2025-05-13 14:30:31,105 - INFO - Successfully loaded faiss with AVX2 support.
+2025-05-13 14:30:31,139 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes. This is only an error if you're trying to use GPU Faiss.
+2025-05-13 14:30:31,144 - INFO - Successfully trained and saved vectorstore for en at faiss_en_index
+2025-05-13 14:30:31,146 - INFO - Loading existing index from faiss_hi_index...
+2025-05-13 14:30:31,146 - ERROR - Error loading existing index: The de-serialization relies loading a pickle file. Pickle files can be modified to deliver a malicious payload that results in execution of arbitrary code on your machine.You will need to set `allow_dangerous_deserialization` to `True` to enable deserialization. If you do this, make sure that you trust the source of the data. For example, if you are loading a file that you created, and know that no one else has modified the file, then this is safe to do. Do not set this to `True` if you are loading a file from an untrusted source (e.g., some random site on the internet.).. Will retrain.
+2025-05-13 14:30:31,147 - INFO - Creating new vectorstore for language: hi...
+2025-05-13 14:30:31,147 - INFO - Use pytorch device_name: cpu
+2025-05-13 14:30:31,147 - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-05-13 14:30:31,192 - INFO - 127.0.0.1 - - [13/May/2025 14:30:31] "[33mOPTIONS /chat HTTP/1.1[0m" 404 -
+2025-05-13 14:30:35,240 - INFO - Use pytorch device_name: cpu
+2025-05-13 14:30:35,240 - INFO - Load pretrained SentenceTransformer: paraphrase-multilingual-MiniLM-L12-v2
+2025-05-13 14:30:36,452 - INFO - 127.0.0.1 - - [13/May/2025 14:30:36] "[33mOPTIONS /chat HTTP/1.1[0m" 404 -
+2025-05-13 14:30:36,766 - INFO - 127.0.0.1 - - [13/May/2025 14:30:36] "[33mOPTIONS /chat HTTP/1.1[0m" 404 -
+2025-05-13 14:30:39,620 - INFO - Successfully trained and saved vectorstore for hi at faiss_hi_index
+2025-05-13 14:30:39,620 - INFO - Model preloading completed!
+2025-05-13 14:36:05,659 - INFO - Found API key in environment variables
+2025-05-13 14:36:06,077 - INFO - [GROQ_API] API key verified successfully
+2025-05-13 14:36:06,077 - INFO - Groq API key verified successfully!
+2025-05-13 14:36:06,077 - INFO - Starting preload of models...
+2025-05-13 14:36:06,120 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-05-13 14:36:06,120 - INFO - [33mPress CTRL+C to quit[0m
+2025-05-13 14:36:15,187 - INFO - Initializing embeddings model...
+2025-05-13 14:36:15,188 - INFO - Use pytorch device_name: cpu
+2025-05-13 14:36:15,188 - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-05-13 14:36:18,681 - ERROR - ERROR: Failed to initialize embeddings model: cannot access local variable 'HuggingFaceEmbeddings' where it is not associated with a value
+Traceback (most recent call last):
+  File "C:\Users\Neha Sachdeva\OneDrive\Desktop\internship\customer_chatbot\customer_chatbot\backend\app.py", line 191, in initialize_embeddings
+    EMBEDDINGS_MODEL = HuggingFaceEmbeddings(
+                       ^^^^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'HuggingFaceEmbeddings' where it is not associated with a value
+2025-05-13 14:36:18,693 - INFO - Use pytorch device_name: cpu
+2025-05-13 14:36:18,693 - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-05-13 14:36:21,304 - INFO - Fallback embeddings model initialized successfully
+2025-05-13 14:36:21,304 - INFO - Loading existing index from faiss_en_index...
+2025-05-13 14:36:21,307 - INFO - Loading faiss with AVX2 support.
+2025-05-13 14:36:21,342 - INFO - Successfully loaded faiss with AVX2 support.
+2025-05-13 14:36:21,350 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes. This is only an error if you're trying to use GPU Faiss.
+2025-05-13 14:36:21,371 - INFO - Successfully loaded existing vectorstore for en
+2025-05-13 14:36:21,371 - INFO - Loading existing index from faiss_hi_index...
+2025-05-13 14:36:21,382 - INFO - Successfully loaded existing vectorstore for hi
+2025-05-13 14:36:21,382 - INFO - Model preloading completed!
+2025-05-13 14:36:21,911 - INFO - 127.0.0.1 - - [13/May/2025 14:36:21] "OPTIONS /chat HTTP/1.1" 200 -
+2025-05-13 14:36:27,520 - INFO - 127.0.0.1 - - [13/May/2025 14:36:27] "[35m[1mPOST /chat HTTP/1.1[0m" 500 -
+2025-05-13 14:36:27,525 - INFO - 127.0.0.1 - - [13/May/2025 14:36:27] "OPTIONS /chat HTTP/1.1" 200 -
+2025-05-13 14:36:27,851 - INFO - 127.0.0.1 - - [13/May/2025 14:36:27] "[35m[1mPOST /chat HTTP/1.1[0m" 500 -
+2025-05-13 14:37:09,020 - INFO - 127.0.0.1 - - [13/May/2025 14:37:09] "OPTIONS /chat HTTP/1.1" 200 -
+2025-05-13 14:37:11,164 - INFO - 127.0.0.1 - - [13/May/2025 14:37:11] "[35m[1mPOST /chat HTTP/1.1[0m" 500 -
+2025-05-13 14:37:12,454 - INFO - 127.0.0.1 - - [13/May/2025 14:37:12] "[35m[1mPOST /chat HTTP/1.1[0m" 500 -
+2025-05-13 14:38:48,859 - INFO - Found API key in environment variables
+2025-05-13 14:38:49,282 - INFO - [GROQ_API] API key verified successfully
+2025-05-13 14:38:49,282 - INFO - Groq API key verified successfully!
+2025-05-13 14:38:49,286 - INFO - Starting preload of models...
+2025-05-13 14:38:49,327 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-05-13 14:38:49,327 - INFO - [33mPress CTRL+C to quit[0m
+2025-05-13 14:38:58,498 - INFO - Initializing embeddings model...
+2025-05-13 14:38:58,502 - INFO - Use pytorch device_name: cpu
+2025-05-13 14:38:58,502 - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-05-13 14:38:59,291 - INFO - 127.0.0.1 - - [13/May/2025 14:38:59] "OPTIONS /chat HTTP/1.1" 200 -
+2025-05-13 14:38:59,547 - INFO - [QA_CHAIN] Creating QA Chain for language: en
+2025-05-13 14:38:59,547 - INFO - Found API key in environment variables
+2025-05-13 14:38:59,976 - INFO - [GROQ_API] API key verified successfully
+2025-05-13 14:38:59,976 - INFO - [QA_CHAIN] API key retrieved and verified successfully
+2025-05-13 14:38:59,976 - INFO - Initializing embeddings model...
+2025-05-13 14:38:59,978 - INFO - Use pytorch device_name: cpu
+2025-05-13 14:38:59,978 - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-05-13 14:39:01,579 - ERROR - ERROR: Failed to initialize embeddings model: cannot access local variable 'HuggingFaceEmbeddings' where it is not associated with a value
+Traceback (most recent call last):
+  File "C:\Users\Neha Sachdeva\OneDrive\Desktop\internship\customer_chatbot\customer_chatbot\backend\app.py", line 191, in initialize_embeddings
+    EMBEDDINGS_MODEL = HuggingFaceEmbeddings(
+                       ^^^^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'HuggingFaceEmbeddings' where it is not associated with a value
+2025-05-13 14:39:01,595 - INFO - Use pytorch device_name: cpu
+2025-05-13 14:39:01,595 - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-05-13 14:39:03,277 - ERROR - ERROR: Failed to initialize embeddings model: cannot access local variable 'HuggingFaceEmbeddings' where it is not associated with a value
+Traceback (most recent call last):
+  File "C:\Users\Neha Sachdeva\OneDrive\Desktop\internship\customer_chatbot\customer_chatbot\backend\app.py", line 191, in initialize_embeddings
+    EMBEDDINGS_MODEL = HuggingFaceEmbeddings(
+                       ^^^^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'HuggingFaceEmbeddings' where it is not associated with a value
+2025-05-13 14:39:03,280 - INFO - Use pytorch device_name: cpu
+2025-05-13 14:39:03,280 - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-05-13 14:39:04,166 - INFO - Fallback embeddings model initialized successfully
+2025-05-13 14:39:04,166 - INFO - Loading existing index from faiss_en_index...
+2025-05-13 14:39:04,171 - INFO - Loading faiss with AVX2 support.
+2025-05-13 14:39:04,202 - INFO - Successfully loaded faiss with AVX2 support.
+2025-05-13 14:39:04,219 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes. This is only an error if you're trying to use GPU Faiss.
+2025-05-13 14:39:04,220 - INFO - Successfully loaded existing vectorstore for en
+2025-05-13 14:39:04,220 - INFO - Loading existing index from faiss_hi_index...
+2025-05-13 14:39:04,222 - INFO - Successfully loaded existing vectorstore for hi
+2025-05-13 14:39:04,223 - INFO - Model preloading completed!
+2025-05-13 14:39:05,844 - INFO - Fallback embeddings model initialized successfully
+2025-05-13 14:39:05,844 - INFO - Loading existing index from faiss_en_index...
+2025-05-13 14:39:05,844 - INFO - Successfully loaded existing vectorstore for en
+2025-05-13 14:39:07,207 - INFO - [QA_CHAIN] QA Chain created successfully
+2025-05-13 14:39:07,765 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-13 14:39:07,778 - INFO - Request processed in 8.23 seconds
+2025-05-13 14:39:07,779 - INFO - 127.0.0.1 - - [13/May/2025 14:39:07] "POST /chat HTTP/1.1" 200 -
+2025-05-13 14:39:24,969 - INFO - 127.0.0.1 - - [13/May/2025 14:39:24] "OPTIONS /chat HTTP/1.1" 200 -
+2025-05-13 14:39:29,542 - INFO - [QA_CHAIN] Creating QA Chain for language: en
+2025-05-13 14:39:29,542 - INFO - Found API key in environment variables
+2025-05-13 14:39:29,937 - INFO - [GROQ_API] API key verified successfully
+2025-05-13 14:39:29,937 - INFO - [QA_CHAIN] API key retrieved and verified successfully
+2025-05-13 14:39:30,960 - INFO - [QA_CHAIN] QA Chain created successfully
+2025-05-13 14:39:31,344 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-13 14:39:31,350 - INFO - Request processed in 1.81 seconds
+2025-05-13 14:39:31,350 - INFO - 127.0.0.1 - - [13/May/2025 14:39:31] "POST /chat HTTP/1.1" 200 -
+2025-05-13 14:39:31,677 - INFO - 127.0.0.1 - - [13/May/2025 14:39:31] "OPTIONS /chat HTTP/1.1" 200 -
+2025-05-13 14:39:31,916 - INFO - [QA_CHAIN] Creating QA Chain for language: en
+2025-05-13 14:39:31,916 - INFO - Found API key in environment variables
+2025-05-13 14:39:32,359 - INFO - [GROQ_API] API key verified successfully
+2025-05-13 14:39:32,359 - INFO - [QA_CHAIN] API key retrieved and verified successfully
+2025-05-13 14:39:33,382 - INFO - [QA_CHAIN] QA Chain created successfully
+2025-05-13 14:39:33,777 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-13 14:39:33,777 - INFO - Request processed in 1.86 seconds
+2025-05-13 14:39:33,777 - INFO - 127.0.0.1 - - [13/May/2025 14:39:33] "POST /chat HTTP/1.1" 200 -
+2025-05-13 14:39:46,244 - INFO - 127.0.0.1 - - [13/May/2025 14:39:46] "OPTIONS /chat HTTP/1.1" 200 -
+2025-05-13 14:39:51,004 - INFO - [QA_CHAIN] Creating QA Chain for language: en
+2025-05-13 14:39:51,004 - INFO - Found API key in environment variables
+2025-05-13 14:39:51,383 - INFO - [GROQ_API] API key verified successfully
+2025-05-13 14:39:51,383 - INFO - [QA_CHAIN] API key retrieved and verified successfully
+2025-05-13 14:39:52,427 - INFO - [QA_CHAIN] QA Chain created successfully
+2025-05-13 14:39:52,849 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-13 14:39:52,851 - INFO - Request processed in 1.85 seconds
+2025-05-13 14:39:52,852 - INFO - 127.0.0.1 - - [13/May/2025 14:39:52] "POST /chat HTTP/1.1" 200 -
+2025-05-13 14:39:53,172 - INFO - 127.0.0.1 - - [13/May/2025 14:39:53] "OPTIONS /chat HTTP/1.1" 200 -
+2025-05-13 14:39:53,426 - INFO - [QA_CHAIN] Creating QA Chain for language: en
+2025-05-13 14:39:53,426 - INFO - Found API key in environment variables
+2025-05-13 14:39:53,810 - INFO - [GROQ_API] API key verified successfully
+2025-05-13 14:39:53,810 - INFO - [QA_CHAIN] API key retrieved and verified successfully
+2025-05-13 14:39:54,853 - INFO - [QA_CHAIN] QA Chain created successfully
+2025-05-13 14:39:55,288 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-13 14:39:55,292 - INFO - Request processed in 1.87 seconds
+2025-05-13 14:39:55,293 - INFO - 127.0.0.1 - - [13/May/2025 14:39:55] "POST /chat HTTP/1.1" 200 -
+2025-05-13 14:40:08,137 - INFO - 127.0.0.1 - - [13/May/2025 14:40:08] "OPTIONS /chat HTTP/1.1" 200 -
+2025-05-13 14:40:12,446 - INFO - [QA_CHAIN] Creating QA Chain for language: en
+2025-05-13 14:40:12,446 - INFO - Found API key in environment variables
+2025-05-13 14:40:12,877 - INFO - [GROQ_API] API key verified successfully
+2025-05-13 14:40:12,877 - INFO - [QA_CHAIN] API key retrieved and verified successfully
+2025-05-13 14:40:13,915 - INFO - [QA_CHAIN] QA Chain created successfully
+2025-05-13 14:40:14,332 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-13 14:40:14,348 - INFO - Request processed in 1.90 seconds
+2025-05-13 14:40:14,348 - INFO - 127.0.0.1 - - [13/May/2025 14:40:14] "POST /chat HTTP/1.1" 200 -
+2025-05-13 14:40:14,662 - INFO - 127.0.0.1 - - [13/May/2025 14:40:14] "OPTIONS /chat HTTP/1.1" 200 -
+2025-05-13 14:40:14,905 - INFO - [QA_CHAIN] Creating QA Chain for language: en
+2025-05-13 14:40:14,905 - INFO - Found API key in environment variables
+2025-05-13 14:40:15,299 - INFO - [GROQ_API] API key verified successfully
+2025-05-13 14:40:15,299 - INFO - [QA_CHAIN] API key retrieved and verified successfully
+2025-05-13 14:40:16,334 - INFO - [QA_CHAIN] QA Chain created successfully
+2025-05-13 14:40:16,771 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-13 14:40:16,773 - INFO - Request processed in 1.87 seconds
+2025-05-13 14:40:16,773 - INFO - 127.0.0.1 - - [13/May/2025 14:40:16] "POST /chat HTTP/1.1" 200 -
+2025-05-13 14:45:56,036 - INFO - 127.0.0.1 - - [13/May/2025 14:45:56] "OPTIONS /chat HTTP/1.1" 200 -
+2025-05-13 14:46:01,386 - INFO - [QA_CHAIN] Creating QA Chain for language: en
+2025-05-13 14:46:01,386 - INFO - Found API key in environment variables
+2025-05-13 14:46:01,869 - INFO - [GROQ_API] API key verified successfully
+2025-05-13 14:46:01,870 - INFO - [QA_CHAIN] API key retrieved and verified successfully
+2025-05-13 14:46:02,894 - INFO - [QA_CHAIN] QA Chain created successfully
+2025-05-13 14:46:03,228 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-13 14:46:03,231 - INFO - Request processed in 1.85 seconds
+2025-05-13 14:46:03,231 - INFO - 127.0.0.1 - - [13/May/2025 14:46:03] "POST /chat HTTP/1.1" 200 -
+2025-05-13 14:46:03,237 - INFO - 127.0.0.1 - - [13/May/2025 14:46:03] "OPTIONS /chat HTTP/1.1" 200 -
+2025-05-13 14:46:03,544 - INFO - [QA_CHAIN] Creating QA Chain for language: en
+2025-05-13 14:46:03,544 - INFO - Found API key in environment variables
+2025-05-13 14:46:03,943 - INFO - [GROQ_API] API key verified successfully
+2025-05-13 14:46:03,943 - INFO - [QA_CHAIN] API key retrieved and verified successfully
+2025-05-13 14:46:04,954 - INFO - [QA_CHAIN] QA Chain created successfully
+2025-05-13 14:46:05,370 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-13 14:46:05,374 - INFO - Request processed in 1.83 seconds
+2025-05-13 14:46:05,374 - INFO - 127.0.0.1 - - [13/May/2025 14:46:05] "POST /chat HTTP/1.1" 200 -
+2025-05-13 14:46:14,723 - INFO - 127.0.0.1 - - [13/May/2025 14:46:14] "OPTIONS /chat HTTP/1.1" 200 -
+2025-05-13 14:46:18,704 - INFO - [QA_CHAIN] Creating QA Chain for language: en
+2025-05-13 14:46:18,704 - INFO - Found API key in environment variables
+2025-05-13 14:46:19,082 - INFO - [GROQ_API] API key verified successfully
+2025-05-13 14:46:19,082 - INFO - [QA_CHAIN] API key retrieved and verified successfully
+2025-05-13 14:46:20,116 - INFO - [QA_CHAIN] QA Chain created successfully
+2025-05-13 14:46:20,919 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-13 14:46:20,921 - INFO - Request processed in 2.22 seconds
+2025-05-13 14:46:20,921 - INFO - 127.0.0.1 - - [13/May/2025 14:46:20] "POST /chat HTTP/1.1" 200 -
+2025-05-13 14:46:20,927 - INFO - 127.0.0.1 - - [13/May/2025 14:46:20] "OPTIONS /chat HTTP/1.1" 200 -
+2025-05-13 14:46:21,231 - INFO - [QA_CHAIN] Creating QA Chain for language: en
+2025-05-13 14:46:21,231 - INFO - Found API key in environment variables
+2025-05-13 14:46:21,620 - INFO - [GROQ_API] API key verified successfully
+2025-05-13 14:46:21,620 - INFO - [QA_CHAIN] API key retrieved and verified successfully
+2025-05-13 14:46:22,659 - INFO - [QA_CHAIN] QA Chain created successfully
+2025-05-13 14:46:23,110 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-13 14:46:23,114 - INFO - Request processed in 1.88 seconds
+2025-05-13 14:46:23,114 - INFO - 127.0.0.1 - - [13/May/2025 14:46:23] "POST /chat HTTP/1.1" 200 -
+2025-05-13 14:49:02,104 - INFO - Found API key in environment variables
+2025-05-13 14:49:02,499 - INFO - [GROQ_API] API key verified successfully
+2025-05-13 14:49:02,499 - INFO - Groq API key verified successfully!
+2025-05-13 14:49:02,499 - INFO - Starting preload of models...
+2025-05-13 14:49:02,544 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-05-13 14:49:02,544 - INFO - [33mPress CTRL+C to quit[0m
+2025-05-13 14:49:11,259 - INFO - Initializing embeddings model...
+2025-05-13 14:49:11,259 - INFO - Use pytorch device_name: cpu
+2025-05-13 14:49:11,259 - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-05-13 14:49:14,232 - ERROR - ERROR: Failed to initialize embeddings model: cannot access local variable 'HuggingFaceEmbeddings' where it is not associated with a value
+Traceback (most recent call last):
+  File "C:\Users\Neha Sachdeva\OneDrive\Desktop\internship\customer_chatbot\customer_chatbot\backend\app.py", line 191, in initialize_embeddings
+    EMBEDDINGS_MODEL = HuggingFaceEmbeddings(
+                       ^^^^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'HuggingFaceEmbeddings' where it is not associated with a value
+2025-05-13 14:49:14,243 - INFO - Use pytorch device_name: cpu
+2025-05-13 14:49:14,243 - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-05-13 14:49:16,754 - INFO - Fallback embeddings model initialized successfully
+2025-05-13 14:49:16,754 - INFO - Loading existing index from faiss_en_index...
+2025-05-13 14:49:16,760 - INFO - Loading faiss with AVX2 support.
+2025-05-13 14:49:16,792 - INFO - Successfully loaded faiss with AVX2 support.
+2025-05-13 14:49:16,803 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes. This is only an error if you're trying to use GPU Faiss.
+2025-05-13 14:49:16,804 - INFO - Successfully loaded existing vectorstore for en
+2025-05-13 14:49:16,805 - INFO - Loading existing index from faiss_hi_index...
+2025-05-13 14:49:16,806 - INFO - Successfully loaded existing vectorstore for hi
+2025-05-13 14:49:16,806 - INFO - Model preloading completed!
+2025-05-13 14:55:06,754 - INFO - Found API key in environment variables
+2025-05-13 14:55:07,199 - INFO - [GROQ_API] API key verified successfully
+2025-05-13 14:55:07,200 - INFO - Groq API key verified successfully!
+2025-05-13 14:55:07,201 - INFO - Starting preload of models...
+2025-05-13 14:55:07,242 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-05-13 14:55:07,242 - INFO - [33mPress CTRL+C to quit[0m
+2025-05-13 14:55:16,471 - INFO - Initializing embeddings model...
+2025-05-13 14:55:16,472 - INFO - Use pytorch device_name: cpu
+2025-05-13 14:55:16,473 - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-05-13 14:55:20,792 - ERROR - ERROR: Failed to initialize embeddings model: cannot access local variable 'HuggingFaceEmbeddings' where it is not associated with a value
+Traceback (most recent call last):
+  File "C:\Users\Neha Sachdeva\OneDrive\Desktop\internship\customer_chatbot\customer_chatbot\backend\app.py", line 191, in initialize_embeddings
+    EMBEDDINGS_MODEL = HuggingFaceEmbeddings(
+                       ^^^^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'HuggingFaceEmbeddings' where it is not associated with a value
+2025-05-13 14:55:20,804 - INFO - Use pytorch device_name: cpu
+2025-05-13 14:55:20,804 - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-05-13 14:55:23,533 - INFO - Fallback embeddings model initialized successfully
+2025-05-13 14:55:23,533 - INFO - Loading existing index from faiss_en_index...
+2025-05-13 14:55:23,544 - INFO - Loading faiss with AVX2 support.
+2025-05-13 14:55:23,570 - INFO - Successfully loaded faiss with AVX2 support.
+2025-05-13 14:55:23,583 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes. This is only an error if you're trying to use GPU Faiss.
+2025-05-13 14:55:23,585 - INFO - Successfully loaded existing vectorstore for en
+2025-05-13 14:55:23,585 - INFO - Loading existing index from faiss_hi_index...
+2025-05-13 14:55:23,586 - INFO - Successfully loaded existing vectorstore for hi
+2025-05-13 14:55:23,587 - INFO - Model preloading completed!
+2025-05-13 14:55:32,870 - INFO - 127.0.0.1 - - [13/May/2025 14:55:32] "OPTIONS /chat HTTP/1.1" 200 -
+2025-05-13 14:55:33,134 - INFO - [QA_CHAIN] Creating QA Chain for language: en
+2025-05-13 14:55:33,134 - INFO - Found API key in environment variables
+2025-05-13 14:55:33,634 - INFO - [GROQ_API] API key verified successfully
+2025-05-13 14:55:33,634 - INFO - [QA_CHAIN] API key retrieved and verified successfully
+2025-05-13 14:55:35,320 - INFO - [QA_CHAIN] QA Chain created successfully
+2025-05-13 14:55:36,014 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-13 14:55:36,027 - INFO - Request processed in 2.89 seconds
+2025-05-13 14:55:36,029 - INFO - 127.0.0.1 - - [13/May/2025 14:55:36] "POST /chat HTTP/1.1" 200 -
+2025-05-13 14:55:45,990 - INFO - 127.0.0.1 - - [13/May/2025 14:55:45] "OPTIONS /chat HTTP/1.1" 200 -
+2025-05-13 14:55:51,989 - INFO - [QA_CHAIN] Creating QA Chain for language: en
+2025-05-13 14:55:51,989 - INFO - Found API key in environment variables
+2025-05-13 14:55:52,434 - INFO - [GROQ_API] API key verified successfully
+2025-05-13 14:55:52,434 - INFO - [QA_CHAIN] API key retrieved and verified successfully
+2025-05-13 14:55:53,454 - INFO - [QA_CHAIN] QA Chain created successfully
+2025-05-13 14:55:53,851 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-13 14:55:53,854 - INFO - Request processed in 1.87 seconds
+2025-05-13 14:55:53,854 - INFO - 127.0.0.1 - - [13/May/2025 14:55:53] "POST /chat HTTP/1.1" 200 -
+2025-05-13 14:55:54,166 - INFO - 127.0.0.1 - - [13/May/2025 14:55:54] "OPTIONS /chat HTTP/1.1" 200 -
+2025-05-13 14:55:54,419 - INFO - [QA_CHAIN] Creating QA Chain for language: en
+2025-05-13 14:55:54,419 - INFO - Found API key in environment variables
+2025-05-13 14:55:54,854 - INFO - [GROQ_API] API key verified successfully
+2025-05-13 14:55:54,854 - INFO - [QA_CHAIN] API key retrieved and verified successfully
+2025-05-13 14:55:55,881 - INFO - [QA_CHAIN] QA Chain created successfully
+2025-05-13 14:55:56,356 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-13 14:55:56,358 - INFO - Request processed in 1.94 seconds
+2025-05-13 14:55:56,359 - INFO - 127.0.0.1 - - [13/May/2025 14:55:56] "POST /chat HTTP/1.1" 200 -
+2025-05-13 14:56:05,042 - INFO - 127.0.0.1 - - [13/May/2025 14:56:05] "OPTIONS /chat HTTP/1.1" 200 -
+2025-05-13 14:56:09,689 - INFO - [QA_CHAIN] Creating QA Chain for language: en
+2025-05-13 14:56:09,689 - INFO - Found API key in environment variables
+2025-05-13 14:56:10,100 - INFO - [GROQ_API] API key verified successfully
+2025-05-13 14:56:10,100 - INFO - [QA_CHAIN] API key retrieved and verified successfully
+2025-05-13 14:56:11,132 - INFO - [QA_CHAIN] QA Chain created successfully
+2025-05-13 14:56:11,497 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-13 14:56:11,497 - INFO - Request processed in 1.81 seconds
+2025-05-13 14:56:11,497 - INFO - 127.0.0.1 - - [13/May/2025 14:56:11] "POST /chat HTTP/1.1" 200 -
+2025-05-13 14:56:11,816 - INFO - 127.0.0.1 - - [13/May/2025 14:56:11] "OPTIONS /chat HTTP/1.1" 200 -
+2025-05-13 14:56:12,081 - INFO - [QA_CHAIN] Creating QA Chain for language: en
+2025-05-13 14:56:12,081 - INFO - Found API key in environment variables
+2025-05-13 14:56:12,456 - INFO - [GROQ_API] API key verified successfully
+2025-05-13 14:56:12,456 - INFO - [QA_CHAIN] API key retrieved and verified successfully
+2025-05-13 14:56:13,480 - INFO - [QA_CHAIN] QA Chain created successfully
+2025-05-13 14:56:13,885 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-13 14:56:13,900 - INFO - Request processed in 1.82 seconds
+2025-05-13 14:56:13,900 - INFO - 127.0.0.1 - - [13/May/2025 14:56:13] "POST /chat HTTP/1.1" 200 -
+2025-05-13 14:56:19,210 - INFO - 127.0.0.1 - - [13/May/2025 14:56:19] "OPTIONS /chat HTTP/1.1" 200 -
+2025-05-13 14:56:25,219 - INFO - [QA_CHAIN] Creating QA Chain for language: en
+2025-05-13 14:56:25,220 - INFO - Found API key in environment variables
+2025-05-13 14:56:25,681 - INFO - [GROQ_API] API key verified successfully
+2025-05-13 14:56:25,681 - INFO - [QA_CHAIN] API key retrieved and verified successfully
+2025-05-13 14:56:26,716 - INFO - [QA_CHAIN] QA Chain created successfully
+2025-05-13 14:56:27,104 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-13 14:56:27,104 - INFO - Request processed in 1.88 seconds
+2025-05-13 14:56:27,104 - INFO - 127.0.0.1 - - [13/May/2025 14:56:27] "POST /chat HTTP/1.1" 200 -
+2025-05-13 14:56:27,416 - INFO - 127.0.0.1 - - [13/May/2025 14:56:27] "OPTIONS /chat HTTP/1.1" 200 -
+2025-05-13 14:56:27,670 - INFO - [QA_CHAIN] Creating QA Chain for language: en
+2025-05-13 14:56:27,670 - INFO - Found API key in environment variables
+2025-05-13 14:56:28,069 - INFO - [GROQ_API] API key verified successfully
+2025-05-13 14:56:28,069 - INFO - [QA_CHAIN] API key retrieved and verified successfully
+2025-05-13 14:56:29,098 - INFO - [QA_CHAIN] QA Chain created successfully
+2025-05-13 14:56:29,478 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-13 14:56:29,484 - INFO - Request processed in 1.81 seconds
+2025-05-13 14:56:29,484 - INFO - 127.0.0.1 - - [13/May/2025 14:56:29] "POST /chat HTTP/1.1" 200 -
+2025-05-13 15:00:27,545 - INFO - Found API key in environment variables
+2025-05-13 15:00:27,992 - INFO - [GROQ_API] API key verified successfully
+2025-05-13 15:00:27,992 - INFO - Groq API key verified successfully!
+2025-05-13 15:00:27,992 - INFO - Starting preload of models...
+2025-05-13 15:00:28,034 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-05-13 15:00:28,034 - INFO - [33mPress CTRL+C to quit[0m
+2025-05-13 15:00:36,660 - INFO - Initializing embeddings model...
+2025-05-13 15:00:36,660 - INFO - Use pytorch device_name: cpu
+2025-05-13 15:00:36,660 - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-05-13 15:00:40,084 - ERROR - ERROR: Failed to initialize embeddings model: cannot access local variable 'HuggingFaceEmbeddings' where it is not associated with a value
+Traceback (most recent call last):
+  File "C:\Users\Neha Sachdeva\OneDrive\Desktop\internship\customer_chatbot\customer_chatbot\backend\app.py", line 191, in initialize_embeddings
+    EMBEDDINGS_MODEL = HuggingFaceEmbeddings(
+                       ^^^^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'HuggingFaceEmbeddings' where it is not associated with a value
+2025-05-13 15:00:40,095 - INFO - Use pytorch device_name: cpu
+2025-05-13 15:00:40,095 - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-05-13 15:00:42,864 - INFO - Fallback embeddings model initialized successfully
+2025-05-13 15:00:42,865 - INFO - Loading existing index from faiss_en_index...
+2025-05-13 15:00:42,869 - INFO - Loading faiss with AVX2 support.
+2025-05-13 15:00:42,902 - INFO - Successfully loaded faiss with AVX2 support.
+2025-05-13 15:00:42,913 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes. This is only an error if you're trying to use GPU Faiss.
+2025-05-13 15:00:42,915 - INFO - Successfully loaded existing vectorstore for en
+2025-05-13 15:00:42,915 - INFO - Loading existing index from faiss_hi_index...
+2025-05-13 15:00:42,916 - INFO - Successfully loaded existing vectorstore for hi
+2025-05-13 15:00:42,916 - INFO - Model preloading completed!
+2025-05-13 15:00:50,479 - INFO - 127.0.0.1 - - [13/May/2025 15:00:50] "OPTIONS /chat HTTP/1.1" 200 -
+2025-05-13 15:00:54,540 - INFO - [QA_CHAIN] Creating QA Chain for language: en
+2025-05-13 15:00:54,540 - INFO - Found API key in environment variables
+2025-05-13 15:00:54,954 - INFO - [GROQ_API] API key verified successfully
+2025-05-13 15:00:54,954 - INFO - [QA_CHAIN] API key retrieved and verified successfully
+2025-05-13 15:00:56,110 - INFO - [QA_CHAIN] Creating QA Chain for language: en
+2025-05-13 15:00:56,110 - INFO - Found API key in environment variables
+2025-05-13 15:00:56,242 - INFO - [QA_CHAIN] QA Chain created successfully
+2025-05-13 15:00:56,537 - INFO - [GROQ_API] API key verified successfully
+2025-05-13 15:00:56,538 - INFO - [QA_CHAIN] API key retrieved and verified successfully
+2025-05-13 15:00:56,751 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-13 15:00:56,756 - INFO - Request processed in 2.22 seconds
+2025-05-13 15:00:56,756 - INFO - 127.0.0.1 - - [13/May/2025 15:00:56] "POST /chat HTTP/1.1" 200 -
+2025-05-13 15:00:57,556 - INFO - [QA_CHAIN] QA Chain created successfully
+2025-05-13 15:00:57,942 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-13 15:00:57,944 - INFO - Request processed in 1.83 seconds
+2025-05-13 15:00:57,945 - INFO - 127.0.0.1 - - [13/May/2025 15:00:57] "POST /chat HTTP/1.1" 200 -
+2025-05-13 15:00:58,249 - INFO - 127.0.0.1 - - [13/May/2025 15:00:58] "OPTIONS /chat HTTP/1.1" 200 -
+2025-05-13 15:00:58,504 - INFO - [QA_CHAIN] Creating QA Chain for language: en
+2025-05-13 15:00:58,505 - INFO - Found API key in environment variables
+2025-05-13 15:00:58,931 - INFO - [GROQ_API] API key verified successfully
+2025-05-13 15:00:58,932 - INFO - [QA_CHAIN] API key retrieved and verified successfully
+2025-05-13 15:00:59,966 - INFO - [QA_CHAIN] QA Chain created successfully
+2025-05-13 15:01:00,353 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-13 15:01:00,353 - INFO - Request processed in 1.85 seconds
+2025-05-13 15:01:00,353 - INFO - 127.0.0.1 - - [13/May/2025 15:01:00] "POST /chat HTTP/1.1" 200 -
+2025-05-13 15:01:14,090 - INFO - 127.0.0.1 - - [13/May/2025 15:01:14] "OPTIONS /chat HTTP/1.1" 200 -
+2025-05-13 15:01:18,634 - INFO - [QA_CHAIN] Creating QA Chain for language: en
+2025-05-13 15:01:18,634 - INFO - Found API key in environment variables
+2025-05-13 15:01:19,040 - INFO - [GROQ_API] API key verified successfully
+2025-05-13 15:01:19,040 - INFO - [QA_CHAIN] API key retrieved and verified successfully
+2025-05-13 15:01:20,070 - INFO - [QA_CHAIN] QA Chain created successfully
+2025-05-13 15:01:20,499 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-13 15:01:20,499 - INFO - Request processed in 1.87 seconds
+2025-05-13 15:01:20,499 - INFO - 127.0.0.1 - - [13/May/2025 15:01:20] "POST /chat HTTP/1.1" 200 -
+2025-05-13 15:01:20,812 - INFO - 127.0.0.1 - - [13/May/2025 15:01:20] "OPTIONS /chat HTTP/1.1" 200 -
+2025-05-13 15:01:21,077 - INFO - [QA_CHAIN] Creating QA Chain for language: en
+2025-05-13 15:01:21,077 - INFO - Found API key in environment variables
+2025-05-13 15:01:21,504 - INFO - [GROQ_API] API key verified successfully
+2025-05-13 15:01:21,504 - INFO - [QA_CHAIN] API key retrieved and verified successfully
+2025-05-13 15:01:22,549 - INFO - [QA_CHAIN] QA Chain created successfully
+2025-05-13 15:01:22,979 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-13 15:01:22,981 - INFO - Request processed in 1.90 seconds
+2025-05-13 15:01:22,982 - INFO - 127.0.0.1 - - [13/May/2025 15:01:22] "POST /chat HTTP/1.1" 200 -
+2025-05-13 15:01:30,160 - INFO - 127.0.0.1 - - [13/May/2025 15:01:30] "OPTIONS /chat HTTP/1.1" 200 -
+2025-05-13 15:01:39,469 - INFO - [QA_CHAIN] Creating QA Chain for language: en
+2025-05-13 15:01:39,469 - INFO - Found API key in environment variables
+2025-05-13 15:01:39,854 - INFO - [GROQ_API] API key verified successfully
+2025-05-13 15:01:39,854 - INFO - [QA_CHAIN] API key retrieved and verified successfully
+2025-05-13 15:01:40,928 - INFO - [QA_CHAIN] QA Chain created successfully
+2025-05-13 15:01:41,308 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-13 15:01:41,310 - INFO - Request processed in 1.84 seconds
+2025-05-13 15:01:41,312 - INFO - 127.0.0.1 - - [13/May/2025 15:01:41] "POST /chat HTTP/1.1" 200 -
+2025-05-13 15:01:41,316 - INFO - 127.0.0.1 - - [13/May/2025 15:01:41] "OPTIONS /chat HTTP/1.1" 200 -
+2025-05-13 15:01:41,622 - INFO - [QA_CHAIN] Creating QA Chain for language: en
+2025-05-13 15:01:41,622 - INFO - Found API key in environment variables
+2025-05-13 15:01:41,977 - INFO - [GROQ_API] API key verified successfully
+2025-05-13 15:01:41,977 - INFO - [QA_CHAIN] API key retrieved and verified successfully
+2025-05-13 15:01:43,016 - INFO - [QA_CHAIN] QA Chain created successfully
+2025-05-13 15:01:43,436 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-13 15:01:43,438 - INFO - Request processed in 1.82 seconds
+2025-05-13 15:01:43,440 - INFO - 127.0.0.1 - - [13/May/2025 15:01:43] "POST /chat HTTP/1.1" 200 -
+2025-05-13 15:15:28,832 - INFO - Found API key in environment variables
+2025-05-13 15:15:29,236 - INFO - [GROQ_API] API key verified successfully
+2025-05-13 15:15:29,236 - INFO - Groq API key verified successfully!
+2025-05-13 15:15:29,236 - INFO - Starting preload of models...
+2025-05-13 15:15:29,287 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-05-13 15:15:29,288 - INFO - [33mPress CTRL+C to quit[0m
+2025-05-13 15:15:39,361 - INFO - Initializing embeddings model...
+2025-05-13 15:15:39,361 - INFO - Use pytorch device_name: cpu
+2025-05-13 15:15:39,361 - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-05-13 15:15:44,049 - ERROR - ERROR: Failed to initialize embeddings model: cannot access local variable 'HuggingFaceEmbeddings' where it is not associated with a value
+Traceback (most recent call last):
+  File "C:\Users\Neha Sachdeva\OneDrive\Desktop\internship\customer_chatbot\customer_chatbot\backend\app.py", line 191, in initialize_embeddings
+    EMBEDDINGS_MODEL = HuggingFaceEmbeddings(
+                       ^^^^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'HuggingFaceEmbeddings' where it is not associated with a value
+2025-05-13 15:15:44,066 - INFO - Use pytorch device_name: cpu
+2025-05-13 15:15:44,066 - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-05-13 15:15:46,659 - INFO - Fallback embeddings model initialized successfully
+2025-05-13 15:15:46,660 - INFO - Loading existing index from faiss_en_index...
+2025-05-13 15:15:46,665 - INFO - Loading faiss with AVX2 support.
+2025-05-13 15:15:46,696 - INFO - Successfully loaded faiss with AVX2 support.
+2025-05-13 15:15:46,708 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes. This is only an error if you're trying to use GPU Faiss.
+2025-05-13 15:15:46,708 - INFO - Successfully loaded existing vectorstore for en
+2025-05-13 15:15:46,708 - INFO - Loading existing index from faiss_hi_index...
+2025-05-13 15:15:46,708 - INFO - Successfully loaded existing vectorstore for hi
+2025-05-13 15:15:46,708 - INFO - Model preloading completed!
+2025-05-13 15:15:52,491 - INFO - 127.0.0.1 - - [13/May/2025 15:15:52] "OPTIONS /chat HTTP/1.1" 200 -
+2025-05-13 15:15:59,847 - INFO - [QA_CHAIN] Creating QA Chain for language: en
+2025-05-13 15:15:59,848 - INFO - Found API key in environment variables
+2025-05-13 15:16:00,248 - INFO - [GROQ_API] API key verified successfully
+2025-05-13 15:16:00,248 - INFO - [QA_CHAIN] API key retrieved and verified successfully
+2025-05-13 15:16:01,553 - INFO - [QA_CHAIN] QA Chain created successfully
+2025-05-13 15:16:02,070 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-13 15:16:02,079 - INFO - Request processed in 2.23 seconds
+2025-05-13 15:16:02,079 - INFO - 127.0.0.1 - - [13/May/2025 15:16:02] "POST /chat HTTP/1.1" 200 -
+2025-05-13 15:16:02,085 - INFO - 127.0.0.1 - - [13/May/2025 15:16:02] "OPTIONS /chat HTTP/1.1" 200 -
+2025-05-13 15:16:02,392 - INFO - [QA_CHAIN] Creating QA Chain for language: en
+2025-05-13 15:16:02,392 - INFO - Found API key in environment variables
+2025-05-13 15:16:02,804 - INFO - [GROQ_API] API key verified successfully
+2025-05-13 15:16:02,804 - INFO - [QA_CHAIN] API key retrieved and verified successfully
+2025-05-13 15:16:03,822 - INFO - [QA_CHAIN] QA Chain created successfully
+2025-05-13 15:16:04,248 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-13 15:16:04,254 - INFO - Request processed in 1.86 seconds
+2025-05-13 15:16:04,254 - INFO - 127.0.0.1 - - [13/May/2025 15:16:04] "POST /chat HTTP/1.1" 200 -
+2025-05-13 15:20:34,040 - INFO - Found API key in environment variables
+2025-05-13 15:20:34,503 - INFO - [GROQ_API] API key verified successfully
+2025-05-13 15:20:34,503 - INFO - Groq API key verified successfully!
+2025-05-13 15:20:34,503 - INFO - Starting preload of models...
+2025-05-13 15:20:34,547 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-05-13 15:20:34,547 - INFO - [33mPress CTRL+C to quit[0m
+2025-05-13 15:20:43,536 - INFO - Initializing embeddings model...
+2025-05-13 15:20:43,537 - INFO - Use pytorch device_name: cpu
+2025-05-13 15:20:43,538 - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-05-13 15:20:47,423 - ERROR - ERROR: Failed to initialize embeddings model: cannot access local variable 'HuggingFaceEmbeddings' where it is not associated with a value
+Traceback (most recent call last):
+  File "C:\Users\Neha Sachdeva\OneDrive\Desktop\internship\customer_chatbot\customer_chatbot\backend\app.py", line 191, in initialize_embeddings
+    EMBEDDINGS_MODEL = HuggingFaceEmbeddings(
+                       ^^^^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'HuggingFaceEmbeddings' where it is not associated with a value
+2025-05-13 15:20:47,432 - INFO - Use pytorch device_name: cpu
+2025-05-13 15:20:47,432 - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-05-13 15:20:51,228 - INFO - Fallback embeddings model initialized successfully
+2025-05-13 15:20:51,228 - INFO - Loading existing index from faiss_en_index...
+2025-05-13 15:20:51,234 - INFO - Loading faiss with AVX2 support.
+2025-05-13 15:20:51,266 - INFO - Successfully loaded faiss with AVX2 support.
+2025-05-13 15:20:51,277 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes. This is only an error if you're trying to use GPU Faiss.
+2025-05-13 15:20:51,277 - INFO - Successfully loaded existing vectorstore for en
+2025-05-13 15:20:51,277 - INFO - Loading existing index from faiss_hi_index...
+2025-05-13 15:20:51,277 - INFO - Successfully loaded existing vectorstore for hi
+2025-05-13 15:20:51,277 - INFO - Model preloading completed!
+2025-05-13 15:20:59,484 - INFO - 127.0.0.1 - - [13/May/2025 15:20:59] "OPTIONS /chat HTTP/1.1" 200 -
+2025-05-13 15:20:59,737 - INFO - [QA_CHAIN] Creating QA Chain for language: en
+2025-05-13 15:20:59,737 - INFO - Found API key in environment variables
+2025-05-13 15:21:00,122 - INFO - [GROQ_API] API key verified successfully
+2025-05-13 15:21:00,122 - INFO - [QA_CHAIN] API key retrieved and verified successfully
+2025-05-13 15:21:01,429 - INFO - [QA_CHAIN] QA Chain created successfully
+2025-05-13 15:21:01,921 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-13 15:21:01,928 - INFO - Request processed in 2.19 seconds
+2025-05-13 15:21:01,928 - INFO - 127.0.0.1 - - [13/May/2025 15:21:01] "POST /chat HTTP/1.1" 200 -
+2025-05-13 15:21:14,736 - INFO - 127.0.0.1 - - [13/May/2025 15:21:14] "OPTIONS /chat HTTP/1.1" 200 -
+2025-05-13 15:21:15,039 - INFO - [QA_CHAIN] Creating QA Chain for language: en
+2025-05-13 15:21:15,039 - INFO - Found API key in environment variables
+2025-05-13 15:21:15,436 - INFO - [GROQ_API] API key verified successfully
+2025-05-13 15:21:15,437 - INFO - [QA_CHAIN] API key retrieved and verified successfully
+2025-05-13 15:21:16,490 - INFO - [QA_CHAIN] QA Chain created successfully
+2025-05-13 15:21:16,941 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-13 15:21:16,941 - INFO - Request processed in 1.90 seconds
+2025-05-13 15:21:16,941 - INFO - 127.0.0.1 - - [13/May/2025 15:21:16] "POST /chat HTTP/1.1" 200 -
+2025-05-14 01:12:31,345 - WARNING - Warning: faq_data.json not found. Please create it before using the FAQ endpoint.
+2025-05-14 01:12:31,345 - INFO - Found API key in environment variables
+2025-05-14 01:12:31,795 - INFO - [GROQ_API] API key verified successfully
+2025-05-14 01:12:31,795 - INFO - Groq API key verified successfully!
+2025-05-14 01:12:31,795 - INFO - Starting preload of models...
+2025-05-14 01:12:31,861 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-05-14 01:12:31,863 - INFO - [33mPress CTRL+C to quit[0m
+2025-05-14 11:37:28,087 - INFO - Found API key in environment variables
+2025-05-14 11:37:28,708 - INFO - [GROQ_API] API key verified successfully
+2025-05-14 11:37:28,710 - INFO - Groq API key verified successfully!
+2025-05-14 11:37:28,713 - INFO - Starting preload of models...
+2025-05-14 11:37:28,830 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-05-14 11:37:28,830 - INFO - [33mPress CTRL+C to quit[0m
+2025-05-14 11:38:13,892 - INFO - 127.0.0.1 - - [14/May/2025 11:38:13] "OPTIONS /chat HTTP/1.1" 200 -
+2025-05-14 11:38:14,150 - INFO - [QA_CHAIN] Creating QA Chain for language: en
+2025-05-14 11:38:14,150 - INFO - Found API key in environment variables
+2025-05-14 11:38:14,579 - INFO - [GROQ_API] API key verified successfully
+2025-05-14 11:38:14,579 - INFO - [QA_CHAIN] API key retrieved and verified successfully
+2025-05-14 11:38:20,549 - INFO - Initializing embeddings model...
+2025-05-14 11:38:20,549 - INFO - Initializing embeddings model...
+2025-05-14 11:38:20,549 - INFO - Use pytorch device_name: cpu
+2025-05-14 11:38:20,549 - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-05-14 11:38:20,549 - INFO - Use pytorch device_name: cpu
+2025-05-14 11:38:20,559 - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-05-14 11:38:24,180 - ERROR - ERROR: Failed to initialize embeddings model: cannot access local variable 'HuggingFaceEmbeddings' where it is not associated with a value
+Traceback (most recent call last):
+  File "C:\Users\Neha Sachdeva\OneDrive\Desktop\internship\customer_chatbot\customer_chatbot\backend\app.py", line 191, in initialize_embeddings
+    EMBEDDINGS_MODEL = HuggingFaceEmbeddings(
+                       ^^^^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'HuggingFaceEmbeddings' where it is not associated with a value
+2025-05-14 11:38:24,198 - INFO - Use pytorch device_name: cpu
+2025-05-14 11:38:24,198 - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-05-14 11:38:25,208 - ERROR - ERROR: Failed to initialize embeddings model: cannot access local variable 'HuggingFaceEmbeddings' where it is not associated with a value
+Traceback (most recent call last):
+  File "C:\Users\Neha Sachdeva\OneDrive\Desktop\internship\customer_chatbot\customer_chatbot\backend\app.py", line 191, in initialize_embeddings
+    EMBEDDINGS_MODEL = HuggingFaceEmbeddings(
+                       ^^^^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'HuggingFaceEmbeddings' where it is not associated with a value
+2025-05-14 11:38:25,216 - INFO - Use pytorch device_name: cpu
+2025-05-14 11:38:25,216 - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-05-14 11:38:26,833 - INFO - Fallback embeddings model initialized successfully
+2025-05-14 11:38:26,834 - INFO - Loading existing index from faiss_en_index...
+2025-05-14 11:38:26,846 - INFO - Loading faiss with AVX2 support.
+2025-05-14 11:38:27,365 - INFO - Successfully loaded faiss with AVX2 support.
+2025-05-14 11:38:27,380 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes. This is only an error if you're trying to use GPU Faiss.
+2025-05-14 11:38:27,413 - INFO - Successfully loaded existing vectorstore for en
+2025-05-14 11:38:27,864 - INFO - Fallback embeddings model initialized successfully
+2025-05-14 11:38:27,864 - INFO - Loading existing index from faiss_hi_index...
+2025-05-14 11:38:27,896 - INFO - Successfully loaded existing vectorstore for hi
+2025-05-14 11:38:27,896 - INFO - Model preloading completed!
+2025-05-14 11:38:29,101 - INFO - [QA_CHAIN] QA Chain created successfully
+2025-05-14 11:38:30,084 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-14 11:38:30,093 - INFO - Request processed in 15.95 seconds
+2025-05-14 11:38:30,097 - INFO - 127.0.0.1 - - [14/May/2025 11:38:30] "POST /chat HTTP/1.1" 200 -
+2025-05-14 11:42:43,926 - INFO - 127.0.0.1 - - [14/May/2025 11:42:43] "OPTIONS /chat HTTP/1.1" 200 -
+2025-05-14 11:42:44,173 - INFO - [QA_CHAIN] Creating QA Chain for language: en
+2025-05-14 11:42:44,173 - INFO - Found API key in environment variables
+2025-05-14 11:42:44,712 - INFO - [GROQ_API] API key verified successfully
+2025-05-14 11:42:44,712 - INFO - [QA_CHAIN] API key retrieved and verified successfully
+2025-05-14 11:42:45,996 - INFO - [QA_CHAIN] QA Chain created successfully
+2025-05-14 11:42:47,657 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-14 11:42:47,659 - INFO - Request processed in 3.49 seconds
+2025-05-14 11:42:47,660 - INFO - 127.0.0.1 - - [14/May/2025 11:42:47] "POST /chat HTTP/1.1" 200 -
+2025-05-14 11:42:58,522 - INFO - 127.0.0.1 - - [14/May/2025 11:42:58] "OPTIONS /chat HTTP/1.1" 200 -
+2025-05-14 11:42:58,843 - INFO - 127.0.0.1 - - [14/May/2025 11:42:58] "POST /chat HTTP/1.1" 200 -
+2025-05-14 11:43:10,331 - INFO - 127.0.0.1 - - [14/May/2025 11:43:10] "OPTIONS /chat HTTP/1.1" 200 -
+2025-05-14 11:43:10,596 - INFO - [QA_CHAIN] Creating QA Chain for language: en
+2025-05-14 11:43:10,597 - INFO - Found API key in environment variables
+2025-05-14 11:43:11,126 - INFO - [GROQ_API] API key verified successfully
+2025-05-14 11:43:11,129 - INFO - [QA_CHAIN] API key retrieved and verified successfully
+2025-05-14 11:43:12,419 - INFO - [QA_CHAIN] QA Chain created successfully
+2025-05-14 11:43:13,361 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-14 11:43:13,363 - INFO - Request processed in 2.77 seconds
+2025-05-14 11:43:13,365 - INFO - 127.0.0.1 - - [14/May/2025 11:43:13] "POST /chat HTTP/1.1" 200 -
+2025-05-14 11:43:34,230 - INFO - 127.0.0.1 - - [14/May/2025 11:43:34] "OPTIONS /chat HTTP/1.1" 200 -
+2025-05-14 11:43:34,544 - INFO - [QA_CHAIN] Creating QA Chain for language: en
+2025-05-14 11:43:34,544 - INFO - Found API key in environment variables
+2025-05-14 11:43:34,939 - INFO - [GROQ_API] API key verified successfully
+2025-05-14 11:43:34,939 - INFO - [QA_CHAIN] API key retrieved and verified successfully
+2025-05-14 11:43:36,309 - INFO - [QA_CHAIN] QA Chain created successfully
+2025-05-14 11:43:37,088 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-14 11:43:37,090 - INFO - Request processed in 2.55 seconds
+2025-05-14 11:43:37,092 - INFO - 127.0.0.1 - - [14/May/2025 11:43:37] "POST /chat HTTP/1.1" 200 -
